@@ -16,9 +16,15 @@
                         </span>
                     </div>
                     <div class=" mt-3 col-6">
-                        <input type="number" placeholder="value-2" required max="100" name="inputOne" formControlName="inputTwo" class="form-control ml-2">
-                        <span class="text-danger" *ngIf="!inputForm.get('inputTwo').valid && inputForm.get('inputTwo').touched">enter correct number</span>
-                        
+                        <input type="number" placeholder="value-1" required max="100" name="inputTwo" formControlName="inputTwo" class="form-control">
+                        <span class="text-danger" *ngIf="!inputForm.get('inputTwo').valid && inputForm.get('inputTwo').touched">
+                            <ng-container *ngIf="inputForm.get('inputTwo')?.errors?.['required']">
+                                Enter valid number
+                            </ng-container>
+                            <ng-container *ngIf="inputForm.get('inputTwo')?.errors?.max">
+                                Enter number bellow 100
+                            </ng-container>
+                        </span>
                     </div>
                     
 
