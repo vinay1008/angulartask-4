@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="section">
+        <div class="col-8 m-auto pt-4">
+            <h1 class="ml-auto">Pie Chart</h1>
+            <div class="container m-auto">
+                <form [formGroup]="inputForm" (ngSubmit)="onSubmit()" class="group">
+                    <div class=" mt-3 col-6">
+                        <input type="number" placeholder="value-1" required max="100" name="inputOne" formControlName="inputOne" class="form-control">
+                        <span class="text-danger" *ngIf="!inputForm.get('inputOne').valid && inputForm.get('inputOne').touched">
+                            <ng-container *ngIf="inputForm.get('inputOne')?.errors?.['required']">
+                                Enter valid number
+                            </ng-container>
+                            <ng-container *ngIf="inputForm.get('inputOne')?.errors?.max">
+                                Enter number bellow 100
+                            </ng-container>
+                        </span>
+                    </div>
+                    <div class=" mt-3 col-6">
+                        <input type="number" placeholder="value-2" required max="100" name="inputOne" formControlName="inputTwo" class="form-control ml-2">
+                        <span class="text-danger" *ngIf="!inputForm.get('inputTwo').valid && inputForm.get('inputTwo').touched">enter correct number</span>
+                        
+                    </div>
+                    
+
+                    <input type="submit" class="btn btn-sm btn-primary m-3 ">
+                    <input type="button" value="clear" class="btn btn-sm btn-danger m-3" (click)="onClickClear()">
+                </form>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+<div class="col-12">
+    <div class="chart-container">
+        <canvas id="myChart" >{{ chart }}</canvas>
+    </div>
+</div>
